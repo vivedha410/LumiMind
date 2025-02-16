@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mood Booster Chat</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css">
+    <style>
+        .chat-container { max-width: 600px; margin: 0 auto; padding: 20px; }
+        .user-message { background: #e3f2fd; padding: 10px; margin-bottom: 10px; border-radius: 8px; text-align: right; }
+        .bot-response { background: #f1f1f1; padding: 10px; margin-bottom: 10px; border-radius: 8px; text-align: left; }
+    </style>
+</head>
+<body>
+
+<div class="container chat-container">
+    <h2 class="text-center">Mood Booster Chatbot</h2>
+
+    <div th:if="${userMessage}" class="user-message">You: <span th:text="${userMessage}"></span></div>
+    <div th:if="${botResponse}" class="bot-response">Bot: <span th:text="${botResponse}"></span></div>
+
+    <form action="/chat/send" method="POST">
+        <input type="text" name="message" placeholder="Type a message..." class="form-control mb-3" required>
+        <button type="submit" class="btn btn-primary w-100">Send</button>
+    </form>
+</div>
+
+</body>
+</html>
